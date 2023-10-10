@@ -1,4 +1,4 @@
-class_name Background
+class_name MockupBackground
 extends Node2D
 
 @onready var _sprite_1: Sprite2D = $Sprite1

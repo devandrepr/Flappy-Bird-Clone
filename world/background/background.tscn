@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs7igdqpl32lu"]
+
+[ext_resource type="Script" path="res://world/background/background.gd" id="1_akksm"]
+[ext_resource type="Texture2D" uid="uid://rxbook8qd2pk" path="res://world/background/sky.png" id="2_t6xel"]
+[ext_resource type="Texture2D" uid="uid://dft6tcovmppnp" path="res://world/background/buildings.png" id="3_c5koh"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_akksm")
+
+[node name="Sky" type="Node2D" parent="."]
+
+[node name="Sprite1" type="Sprite2D" parent="Sky"]
+texture_repeat = 2
+texture = ExtResource("2_t6xel")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 288)
+
+[node name="VOSNotifier1" type="VisibleOnScreenNotifier2D" parent="Sky/Sprite1"]
+position = Vector2(-3.8147e-06, 7.62939e-06)
+scale = Vector2(12.8, 14.4)
+
+[node name="Sprite2" type="Sprite2D" parent="Sky"]
+texture_repeat = 2
+position = Vector2(256, 0)
+texture = ExtResource("2_t6xel")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 288)
+
+[node name="VOSNotifier2" type="VisibleOnScreenNotifier2D" parent="Sky/Sprite2"]
+position = Vector2(-3.8147e-06, 7.62939e-06)
+scale = Vector2(12.8, 14.4)
+
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="Sprite1" type="Sprite2D" parent="Buildings"]
+texture_repeat = 2
+position = Vector2(0, 97)
+texture = ExtResource("3_c5koh")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 94)
+
+[node name="VOSNotifier1" type="VisibleOnScreenNotifier2D" parent="Buildings/Sprite1"]
+scale = Vector2(1, 0.333333)
+rect = Rect2(-128, -144, 256, 288)
+
+[node name="Sprite2" type="Sprite2D" parent="Buildings"]
+texture_repeat = 2
+position = Vector2(256, 97)
+texture = ExtResource("3_c5koh")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 94)
+
+[node name="VOSNotifier2" type="VisibleOnScreenNotifier2D" parent="Buildings/Sprite2"]
+scale = Vector2(1, 0.333333)
+rect = Rect2(-128, -144, 256, 288)
