@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2bmcf71fse4y"]
+
+[ext_resource type="PackedScene" uid="uid://cmbfrpn3bxic4" path="res://_mockup/background.tscn" id="1_tq35v"]
+[ext_resource type="PackedScene" uid="uid://c1gclcegnfnxy" path="res://_mockup/floor.tscn" id="2_ahauv"]
+[ext_resource type="PackedScene" uid="uid://cdv7liklesxma" path="res://_mockup/pipe_set.tscn" id="3_jtx7m"]
+[ext_resource type="PackedScene" uid="uid://2cr8cg68c4l5" path="res://_mockup/bird.tscn" id="3_uq4no"]
+
+[node name="Mockup" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+
+[node name="InputManager" type="Node2D" parent="."]
+
+[node name="Background" parent="." instance=ExtResource("1_tq35v")]
+position = Vector2(0, -16)
+
+[node name="PipeSet" parent="." instance=ExtResource("3_jtx7m")]
+
+[node name="Floor" parent="." instance=ExtResource("2_ahauv")]
+position = Vector2(0, 144)
+
+[node name="Bird" parent="." instance=ExtResource("3_uq4no")]

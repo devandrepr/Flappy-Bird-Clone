@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1gclcegnfnxy"]
+
+[ext_resource type="Texture2D" uid="uid://cnb2rh8ppx2mf" path="res://_mockup/ground.png" id="1_qq0q3"]
+[ext_resource type="Script" path="res://_mockup/floor.gd" id="1_wtosh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upqrl"]
+size = Vector2(256, 32)
+
+[node name="Floor" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_wtosh")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite1" type="Sprite2D" parent="Sprites"]
+texture_repeat = 2
+texture = ExtResource("1_qq0q3")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 32)
+
+[node name="VOSNotifier1" type="VisibleOnScreenNotifier2D" parent="Sprites/Sprite1"]
+rect = Rect2(-128, -16, 256, 32)
+
+[node name="Sprite2" type="Sprite2D" parent="Sprites"]
+texture_repeat = 2
+position = Vector2(256, 0)
+texture = ExtResource("1_qq0q3")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 32)
+
+[node name="VOSNotifier2" type="VisibleOnScreenNotifier2D" parent="Sprites/Sprite2"]
+position = Vector2(1.52588e-05, 0)
+scale = Vector2(12.8, 1.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_upqrl")

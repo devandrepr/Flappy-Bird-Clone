@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdv7liklesxma"]
+
+[ext_resource type="Texture2D" uid="uid://8asligid3fle" path="res://_mockup/pipe1.png" id="1_4jril"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov14d"]
+size = Vector2(28, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q1hn"]
+size = Vector2(28, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fhjh"]
+size = Vector2(10, 60)
+
+[node name="PipeSet" type="Node2D"]
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 192)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottom"]
+texture = ExtResource("1_4jril")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 320)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+shape = SubResource("RectangleShape2D_ov14d")
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2(0, -192)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Top"]
+texture = ExtResource("1_4jril")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 320)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource("RectangleShape2D_7q1hn")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_5fhjh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScoreArea"]
+visible = false
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_5fhjh")

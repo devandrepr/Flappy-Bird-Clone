@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://2cr8cg68c4l5"]
+
+[ext_resource type="Texture2D" uid="uid://wruiqspc5iou" path="res://_mockup/bird3.png" id="1_ftd7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh16g"]
+atlas = ExtResource("1_ftd7g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgvlm"]
+atlas = ExtResource("1_ftd7g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqols"]
+atlas = ExtResource("1_ftd7g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k7xs"]
+atlas = ExtResource("1_ftd7g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fl0wo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh16g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgvlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqols")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k7xs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iagqb"]
+radius = 6.0
+
+[node name="Bird" type="CharacterBody2D"]
+collision_mask = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fl0wo")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iagqb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
