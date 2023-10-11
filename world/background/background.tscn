@@ -13,28 +13,28 @@ script = ExtResource("1_akksm")
 texture_repeat = 2
 texture = ExtResource("2_t6xel")
 region_enabled = true
-region_rect = Rect2(0, 0, 256, 288)
+region_rect = Rect2(0, 0, 256, 320)
 
 [node name="VOSNotifier1" type="VisibleOnScreenNotifier2D" parent="Sky/Sprite1"]
-position = Vector2(-3.8147e-06, 7.62939e-06)
-scale = Vector2(12.8, 14.4)
+position = Vector2(-3.8147e-06, 8)
+scale = Vector2(12.8, 15.2)
 
 [node name="Sprite2" type="Sprite2D" parent="Sky"]
 texture_repeat = 2
 position = Vector2(256, 0)
 texture = ExtResource("2_t6xel")
 region_enabled = true
-region_rect = Rect2(0, 0, 256, 288)
+region_rect = Rect2(0, 0, 256, 320)
 
 [node name="VOSNotifier2" type="VisibleOnScreenNotifier2D" parent="Sky/Sprite2"]
-position = Vector2(-3.8147e-06, 7.62939e-06)
-scale = Vector2(12.8, 14.4)
+position = Vector2(-3.8147e-06, 8)
+scale = Vector2(12.8, 15.2)
 
 [node name="Buildings" type="Node2D" parent="."]
+position = Vector2(0, 81)
 
 [node name="Sprite1" type="Sprite2D" parent="Buildings"]
 texture_repeat = 2
-position = Vector2(0, 97)
 texture = ExtResource("3_c5koh")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 94)
@@ -45,7 +45,7 @@ rect = Rect2(-128, -144, 256, 288)
 
 [node name="Sprite2" type="Sprite2D" parent="Buildings"]
 texture_repeat = 2
-position = Vector2(256, 97)
+position = Vector2(256, 0)
 texture = ExtResource("3_c5koh")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 94)
