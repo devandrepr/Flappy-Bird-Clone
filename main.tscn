@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8405ekmhahel"]
+[gd_scene load_steps=3 format=3 uid="uid://b8405ekmhahel"]
 
 [ext_resource type="PackedScene" uid="uid://cs7igdqpl32lu" path="res://world/background/background.tscn" id="1_ghvjt"]
+[ext_resource type="PackedScene" uid="uid://i06jq56sstlm" path="res://world/floor/floor.tscn" id="2_ia2t6"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_ghvjt")]
+
+[node name="Floor" parent="." instance=ExtResource("2_ia2t6")]
+position = Vector2(0, 144)
 
 [node name="#TEMP# Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

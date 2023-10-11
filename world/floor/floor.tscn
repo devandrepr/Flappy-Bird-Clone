@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://i06jq56sstlm"]
+
+[ext_resource type="Script" path="res://world/floor/floor.gd" id="1_ht2vu"]
+[ext_resource type="Texture2D" uid="uid://yl66ncl3nhp2" path="res://world/floor/floor.png" id="1_wp015"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7kxx"]
+size = Vector2(256, 32)
+
+[node name="Floor" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_ht2vu")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_wp015")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 32)
+
+[node name="VOSNotifier1" type="VisibleOnScreenNotifier2D" parent="Sprite1"]
+scale = Vector2(12.8, 1.6)
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(256, 0)
+texture = ExtResource("1_wp015")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 32)
+
+[node name="VOSNotifier2" type="VisibleOnScreenNotifier2D" parent="Sprite2"]
+scale = Vector2(12.8, 1.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j7kxx")

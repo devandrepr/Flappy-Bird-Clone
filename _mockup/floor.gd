@@ -1,4 +1,4 @@
-class_name Floor
+class_name MockupFloor
 extends StaticBody2D
 
 @onready var _sprites: Node2D = $Sprites
