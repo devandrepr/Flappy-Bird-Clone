@@ -22,12 +22,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_sky_sprite1.global_position.x += sky_speed * delta
-	_sky_sprite2.global_position.x += sky_speed * delta
-	_buildings_sprite1.global_position.x += buildings_speed * delta
-	_buildings_sprite2.global_position.x += buildings_speed * delta
+	_sky_sprite1.position.x += sky_speed * delta
+	_sky_sprite2.position.x += sky_speed * delta
+	_buildings_sprite1.position.x += buildings_speed * delta
+	_buildings_sprite2.position.x += buildings_speed * delta
 
 
 func _on_screen_exited(sprite_out: Sprite2D, sprite_in: Sprite2D) -> void:
 #	prints("<--   ", sprite_out, "   <--   ", sprite_in)
-	sprite_out.global_position.x = sprite_in.global_position.x + sprite_out.get_rect().size.x
+	sprite_out.position.x = sprite_in.position.x + sprite_out.get_rect().size.x

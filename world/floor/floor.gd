@@ -16,10 +16,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_sprite1.global_position.x += speed * delta
-	_sprite2.global_position.x += speed * delta
+	_sprite1.position.x += speed * delta
+	_sprite2.position.x += speed * delta
 
 
 func _on_screen_exited(sprite_out: Sprite2D, sprite_in: Sprite2D) -> void:
 #	prints("<--   ", sprite_out, "   <--   ", sprite_in)
-	sprite_out.global_position.x = sprite_in.global_position.x + sprite_out.get_rect().size.x
+	sprite_out.position.x = sprite_in.position.x + sprite_out.get_rect().size.x
