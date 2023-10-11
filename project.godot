@@ -16,6 +16,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Debugger="*res://autoloads/debugger.gd"
+
 [debug]
 
 gdscript/warnings/unsafe_property_access=1
