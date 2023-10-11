@@ -5,8 +5,8 @@ extends StaticBody2D
 
 @onready var _sprite1: Sprite2D = $Sprite1
 @onready var _sprite2: Sprite2D = $Sprite2
-@onready var _vos1: VisibleOnScreenNotifier2D = $Sprite1/VOSNotifier1
-@onready var _vos2: VisibleOnScreenNotifier2D = $Sprite2/VOSNotifier2
+@onready var _vos1: VisibleOnScreenNotifier2D = $Sprite1/VisibleOnScreenNotifier2D
+@onready var _vos2: VisibleOnScreenNotifier2D = $Sprite2/VisibleOnScreenNotifier2D
 @onready var col_shape: CollisionShape2D = $CollisionShape2D
 
 

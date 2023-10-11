@@ -6,12 +6,12 @@ extends Node2D
 
 @onready var _sky_sprite1: Sprite2D = $Sky/Sprite1
 @onready var _sky_sprite2: Sprite2D = $Sky/Sprite2
-@onready var _sky_vos1: VisibleOnScreenNotifier2D = $Sky/Sprite1/VOSNotifier1
-@onready var _sky_vos2: VisibleOnScreenNotifier2D = $Sky/Sprite2/VOSNotifier2
+@onready var _sky_vos1: VisibleOnScreenNotifier2D = $Sky/Sprite1/VisibleOnScreenNotifier2D
+@onready var _sky_vos2: VisibleOnScreenNotifier2D = $Sky/Sprite2/VisibleOnScreenNotifier2D
 @onready var _buildings_sprite1: Sprite2D = $Buildings/Sprite1
 @onready var _buildings_sprite2: Sprite2D = $Buildings/Sprite2
-@onready var _buildings_vos1: VisibleOnScreenNotifier2D = $Buildings/Sprite1/VOSNotifier1
-@onready var _buildings_vos2: VisibleOnScreenNotifier2D = $Buildings/Sprite2/VOSNotifier2
+@onready var _buildings_vos1: VisibleOnScreenNotifier2D = $Buildings/Sprite1/VisibleOnScreenNotifier2D
+@onready var _buildings_vos2: VisibleOnScreenNotifier2D = $Buildings/Sprite2/VisibleOnScreenNotifier2D
 
 
 func _ready() -> void:

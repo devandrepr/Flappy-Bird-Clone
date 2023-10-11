@@ -16,7 +16,7 @@ texture = ExtResource("1_wp015")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 32)
 
-[node name="VOSNotifier1" type="VisibleOnScreenNotifier2D" parent="Sprite1"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite1"]
 scale = Vector2(12.8, 1.6)
 
 [node name="Sprite2" type="Sprite2D" parent="."]
@@ -26,7 +26,7 @@ texture = ExtResource("1_wp015")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 32)
 
-[node name="VOSNotifier2" type="VisibleOnScreenNotifier2D" parent="Sprite2"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2"]
 scale = Vector2(12.8, 1.6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
