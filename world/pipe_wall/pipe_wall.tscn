@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3s4ynl35d56m"]
+
+[ext_resource type="Script" path="res://world/pipe_wall/pipe_wall.gd" id="1_1imed"]
+[ext_resource type="Texture2D" uid="uid://4q0ys0b30nr3" path="res://world/pipe_wall/pipe.png" id="1_drsli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov14d"]
+size = Vector2(28, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q1hn"]
+size = Vector2(28, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fhjh"]
+size = Vector2(10, 60)
+
+[node name="PipeWall" type="Node2D"]
+script = ExtResource("1_1imed")
+
+[node name="PipeBottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 160)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PipeBottom"]
+texture = ExtResource("1_drsli")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 256)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeBottom"]
+shape = SubResource("RectangleShape2D_ov14d")
+
+[node name="PipeTop" type="StaticBody2D" parent="."]
+position = Vector2(0, -160)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PipeTop"]
+texture = ExtResource("1_drsli")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 256)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeTop"]
+shape = SubResource("RectangleShape2D_7q1hn")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_5fhjh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.6, 28.8)
