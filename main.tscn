@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8405ekmhahel"]
+[gd_scene load_steps=5 format=3 uid="uid://b8405ekmhahel"]
 
 [ext_resource type="PackedScene" uid="uid://cs7igdqpl32lu" path="res://world/background/background.tscn" id="1_ghvjt"]
 [ext_resource type="PackedScene" uid="uid://dvvpuuph1wfc1" path="res://world/pipe_wall/pipe_wall_spawner.tscn" id="2_i27xn"]
 [ext_resource type="PackedScene" uid="uid://i06jq56sstlm" path="res://world/floor/floor.tscn" id="2_ia2t6"]
+[ext_resource type="PackedScene" uid="uid://pqbxot2i8lgq" path="res://player/player.tscn" id="4_6dmlv"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,3 +17,5 @@ position = Vector2(144, -16)
 
 [node name="Floor" parent="." instance=ExtResource("2_ia2t6")]
 position = Vector2(0, 144)
+
+[node name="Player" parent="." instance=ExtResource("4_6dmlv")]
