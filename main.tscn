@@ -6,16 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://pqbxot2i8lgq" path="res://player/player.tscn" id="4_6dmlv"]
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 
 [node name="#TEMP# Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
 [node name="Background" parent="." instance=ExtResource("1_ghvjt")]
+process_mode = 1
 
 [node name="PipeWallSpawner" parent="." instance=ExtResource("2_i27xn")]
+process_mode = 1
 position = Vector2(144, -16)
 
 [node name="Floor" parent="." instance=ExtResource("2_ia2t6")]
+process_mode = 1
 position = Vector2(0, 144)
 
 [node name="Player" parent="." instance=ExtResource("4_6dmlv")]

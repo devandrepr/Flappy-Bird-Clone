@@ -1,8 +1,6 @@
 class_name PipeWall
 extends Node2D
 
-signal point_scored
-
 @export var speed: int = -24*3
 
 @onready var pipe_bottom: Pipe = $PipeBottom
@@ -12,7 +10,7 @@ signal point_scored
 
 
 func _ready() -> void:
-	_score_area.connect("body_entered", _on_point_scored)
+	_score_area.connect("body_entered", _on_body_entered_score_area)
 	_vos.connect("screen_exited", _on_screen_exited)
 
 	pipe_bottom.opposite_pipe = pipe_top
@@ -23,8 +21,8 @@ func _process(delta: float) -> void:
 	position.x += speed * delta
 
 
-func _on_point_scored() -> void:
-	point_scored.emit()
+func _on_body_entered_score_area(_body: Node2D) -> void:
+	GameManager.point_scored.emit()
 
 
 func _on_screen_exited() -> void:
