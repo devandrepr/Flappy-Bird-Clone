@@ -1,7 +1,7 @@
 class_name Floor
 extends StaticBody2D
 
-@export var speed: int = -24
+@export var speed: int = -24*3
 
 @onready var _sprite1: Sprite2D = $Sprite1
 @onready var _sprite2: Sprite2D = $Sprite2

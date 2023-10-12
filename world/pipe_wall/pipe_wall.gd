@@ -3,7 +3,7 @@ extends Node2D
 
 signal point_scored
 
-@export var speed: int = -24
+@export var speed: int = -24*3
 
 @onready var _score_area: Area2D = $ScoreArea
 @onready var _vos: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D

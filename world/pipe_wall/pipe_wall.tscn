@@ -16,7 +16,7 @@ size = Vector2(10, 60)
 script = ExtResource("1_1imed")
 
 [node name="PipeBottom" type="StaticBody2D" parent="."]
-position = Vector2(0, 160)
+position = Vector2(0, 156)
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PipeBottom"]
@@ -29,7 +29,7 @@ region_filter_clip_enabled = true
 shape = SubResource("RectangleShape2D_ov14d")
 
 [node name="PipeTop" type="StaticBody2D" parent="."]
-position = Vector2(0, -160)
+position = Vector2(0, -156)
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PipeTop"]

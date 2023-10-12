@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RangeTop" type="Marker2D" parent="."]
-position = Vector2(0, -88)
+position = Vector2(0, -80)
 
 [node name="PositionGizmo" type="ReferenceRect" parent="RangeTop"]
 anchors_preset = 8
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RangeBottom" type="Marker2D" parent="."]
-position = Vector2(0, 88)
+position = Vector2(0, 80)
 
 [node name="PositionGizmo" type="ReferenceRect" parent="RangeBottom"]
 anchors_preset = 8
@@ -49,6 +49,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.1
+wait_time = 1.7
 
 [node name="Pipes" type="Node2D" parent="."]
