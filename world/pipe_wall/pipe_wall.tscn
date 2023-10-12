@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3s4ynl35d56m"]
+[gd_scene load_steps=8 format=3 uid="uid://c3s4ynl35d56m"]
 
 [ext_resource type="Script" path="res://world/pipe_wall/pipe_wall.gd" id="1_1imed"]
 [ext_resource type="Texture2D" uid="uid://4q0ys0b30nr3" path="res://world/pipe_wall/pipe.png" id="1_drsli"]
+[ext_resource type="Script" path="res://world/pipe_wall/pipe_bottom.gd" id="2_ptnes"]
+[ext_resource type="Script" path="res://world/pipe_wall/pipe_top.gd" id="4_f2yda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov14d"]
 size = Vector2(28, 256)
@@ -18,6 +20,7 @@ script = ExtResource("1_1imed")
 [node name="PipeBottom" type="StaticBody2D" parent="."]
 position = Vector2(0, 156)
 collision_layer = 2
+script = ExtResource("2_ptnes")
 
 [node name="Sprite2D" type="Sprite2D" parent="PipeBottom"]
 texture = ExtResource("1_drsli")
@@ -31,6 +34,7 @@ shape = SubResource("RectangleShape2D_ov14d")
 [node name="PipeTop" type="StaticBody2D" parent="."]
 position = Vector2(0, -156)
 collision_layer = 2
+script = ExtResource("4_f2yda")
 
 [node name="Sprite2D" type="Sprite2D" parent="PipeTop"]
 texture = ExtResource("1_drsli")
