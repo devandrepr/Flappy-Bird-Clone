@@ -12,26 +12,22 @@ script = ExtResource("1_akksm")
 [node name="Sprite1" type="Sprite2D" parent="Sky"]
 texture_repeat = 2
 texture = ExtResource("2_t6xel")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 320)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sky/Sprite1"]
-position = Vector2(-3.8147e-06, 8)
-scale = Vector2(12.8, 15.2)
+position = Vector2(-3.8147e-06, 1.43051e-06)
+scale = Vector2(12.8, 12.8)
 
 [node name="Sprite2" type="Sprite2D" parent="Sky"]
 texture_repeat = 2
 position = Vector2(256, 0)
 texture = ExtResource("2_t6xel")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 320)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sky/Sprite2"]
-position = Vector2(-3.8147e-06, 8)
-scale = Vector2(12.8, 15.2)
+position = Vector2(-3.8147e-06, 1.43051e-06)
+scale = Vector2(12.8, 12.8)
 
 [node name="Buildings" type="Node2D" parent="."]
-position = Vector2(0, 81)
+position = Vector2(0, 49)
 
 [node name="Sprite1" type="Sprite2D" parent="Buildings"]
 texture_repeat = 2

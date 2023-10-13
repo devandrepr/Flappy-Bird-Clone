@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RangeTop" type="Marker2D" parent="."]
-position = Vector2(0, -80)
+position = Vector2(0, -64)
 
 [node name="PositionGizmo" type="ReferenceRect" parent="RangeTop"]
 anchors_preset = 8
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RangeBottom" type="Marker2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(0, 64)
 
 [node name="PositionGizmo" type="ReferenceRect" parent="RangeBottom"]
 anchors_preset = 8
