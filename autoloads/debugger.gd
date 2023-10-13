@@ -14,7 +14,6 @@ var background_is_enabled: bool = true
 var floor_is_enabled: bool = true
 var pipe_wall_is_enabled: bool = true
 var player_is_enabled: bool = true
-var player: Player
 
 var _slowmotion_is_active: bool = false # refers to slow motion being applied or not
 var _glide_is_active: bool = false
@@ -47,33 +46,27 @@ func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(GLIDE_TOGGLE_KEY):
 		if _glide_is_active:
 			_glide_is_active = false
-			player.is_gliding = false
+			GameManager.player.is_gliding = false
 			print("[Debugger] Glide deactivated")
 		else:
 			_glide_is_active = true
-			player.is_gliding = true
+			GameManager.player.is_gliding = true
 			print("[Debugger] Glide activated")
 
 
 func _ready() -> void:
-	await get_tree().process_frame
-
-	var _scene := get_tree().current_scene
-	for child in _scene.get_children():
-		if not background_is_enabled and child is Background:
-			prints("[Debugger] Background is disabled; freeing", child)
-			child.queue_free()
-		if not floor_is_enabled and child is Floor:
-			prints("[Debugger] Floor is disabled; freeing", child)
-			child.queue_free()
-		if not pipe_wall_is_enabled and (child is PipeWall or child is PipeWallSpawner):
-			prints("[Debugger] PipeWall is disabled; freeing", child)
-			child.queue_free()
-		if child is Player:
-			player = child
-			if not player_is_enabled:
-				prints("[Debugger] Player is disabled; freeing", child)
-				child.queue_free()
+	if not background_is_enabled:
+		prints("[Debugger] Background is disabled; freeing", GameManager.background)
+		GameManager.background.queue_free()
+	if not floor_is_enabled:
+		prints("[Debugger] Floor is disabled; freeing", GameManager.floor)
+		GameManager.floor.queue_free()
+	if not pipe_wall_is_enabled:
+		prints("[Debugger] PipeWall is disabled; freeing", GameManager.pipe_wall_spawner)
+		GameManager.pipe_wall_spawner.queue_free()
+	if not player_is_enabled:
+		prints("[Debugger] Player is disabled; freeing", GameManager.player)
+		GameManager.player.queue_free()
 
 	if slowmotion_is_enabled:
 		print("[Debugger] Slow motion control is enabled")

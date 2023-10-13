@@ -7,6 +7,11 @@ signal point_scored
 
 var score: int = 0
 
+@onready var background: Background = get_tree().current_scene.get_node("%Background")
+@onready var pipe_wall_spawner: PipeWallSpawner = get_tree().current_scene.get_node("%PipeWallSpawner")
+@onready var floor: Floor = get_tree().current_scene.get_node("%Floor")
+@onready var player: Player = get_tree().current_scene.get_node("%Player")
+
 
 func _init() -> void:
 	body_entered_pipe.connect(_on_body_entered_pipe)
@@ -16,14 +21,14 @@ func _init() -> void:
 
 
 func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: Area2D) -> void:
-	if body is Player:
+	if body == player:
 		if not body.is_dead:
 			body.die()
 			get_tree().paused = true
 
 
 func _on_player_collided(player: Player, collider: Node2D) -> void:
-	if collider is Floor:
+	if collider == floor:
 		# Stop processing physics on Player, so it stops rotating and checking further collisions
 		player.process_mode = Node.PROCESS_MODE_PAUSABLE
 	if not player.is_dead:

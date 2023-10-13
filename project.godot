@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Debugger="*res://autoloads/debugger.gd"
 GameManager="*res://autoloads/game_manager.gd"
+Debugger="*res://autoloads/debugger.gd"
 
 [debug]
 
