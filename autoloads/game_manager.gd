@@ -1,6 +1,6 @@
 extends Node
 
-signal body_entered_pipe(body: Node2D, pipe: Area2D, other_pipe: Area2D)
+signal body_entered_pipe(body: Node2D, pipe_entered: Area2D, pipe_opposite: Area2D)
 signal player_collided(player: Player, collider: Node2D)
 signal player_died(player: Player)
 signal point_scored
@@ -15,7 +15,7 @@ func _init() -> void:
 	point_scored.connect(_on_point_scored)
 
 
-func _on_body_entered_pipe(body: Node2D, pipe: Area2D, other_pipe: Area2D) -> void:
+func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: Area2D) -> void:
 	if body is Player:
 		if not body.is_dead:
 			body.die()

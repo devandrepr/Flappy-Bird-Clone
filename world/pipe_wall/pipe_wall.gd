@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 	position.x += speed * delta
 
 
-func _on_body_entered_pipe(body: Node2D, pipe: Area2D, other_pipe: Area2D) -> void:
-	GameManager.body_entered_pipe.emit(body, pipe, other_pipe)
+func _on_body_entered_pipe(body: Node2D, pipe_entered: Area2D, pipe_opposite: Area2D) -> void:
+	GameManager.body_entered_pipe.emit(body, pipe_entered, pipe_opposite)
 
 
 func _on_body_entered_score_area(_body: Node2D) -> void:
