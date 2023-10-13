@@ -24,11 +24,11 @@ func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: 
 
 func _on_player_collided(player: Player, collider: Node2D) -> void:
 	if collider is Floor:
-		# Just so the player stops rotating when already on the floor
+		# Stop processing physics on Player, so it stops rotating and checking further collisions
 		player.process_mode = Node.PROCESS_MODE_PAUSABLE
-
-	get_tree().paused = true
-	player.die()
+	if not player.is_dead:
+		player.die()
+		get_tree().paused = true
 
 
 #TODO# Probably should skip this signal, since it's only GameManager who calls player.die() anyway
