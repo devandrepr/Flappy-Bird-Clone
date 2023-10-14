@@ -3,9 +3,11 @@ extends CharacterBody2D
 # Got some hints from this FlappyBird tutorial:
 # https://github.com/wojciech-bilicki/FlappyBird/blob/main/Scripts/bird.gd
 
+#TODO# Need a finite state machine instead of everything related to these booleans
 var is_gliding: bool: set = _set_is_gliding
 var is_dropping: bool = false
 var is_dead: bool = false
+var is_respawning: bool = false
 
 var _gravity: int = 700
 var _max_falling_speed: int = 400
@@ -16,6 +18,9 @@ var _falling_rotation_degrees_max: int = 90
 var _falling_rotation_degrees_speed: int = 200
 var _dead_falling_rotation_degrees_speed: int = 1000
 var _dead_bounce_speed: int = 50
+
+var _initial_position: Vector2
+var _initial_falling_rotation_degrees_speed := _falling_rotation_degrees_speed
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -46,6 +51,17 @@ func jump() -> void:
 	GameManager.player_jumped.emit()
 
 
+func respawn() -> void:
+	print("#TODO# respawn called")
+	is_respawning = true
+	position = _initial_position
+	_falling_rotation_degrees_speed = _initial_falling_rotation_degrees_speed
+	animated_sprite.play()
+	is_dropping = false
+	is_dead = false
+	is_gliding = true
+
+
 func _set_is_gliding(new_value: bool) -> void:
 	is_gliding = new_value
 	if new_value:
@@ -57,13 +73,17 @@ func _set_is_gliding(new_value: bool) -> void:
 
 
 func _ready() -> void:
+	_initial_position = position
 	is_gliding = true
 
 
 func _physics_process(delta: float) -> void:
 	#TODO# Should this be handled by a GameManager or InputManager instead?
 	if Input.is_action_just_pressed("jump") and not is_dropping and not is_dead:
-		jump()
+		if is_respawning:
+			is_respawning = false
+		else:
+			jump()
 
 	if not is_gliding:
 		# Apply gravity, limiting the falling speed to the preset max

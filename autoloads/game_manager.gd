@@ -14,10 +14,21 @@ var score: int = 0
 
 
 func _init() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	body_entered_pipe.connect(_on_body_entered_pipe)
 	player_collided.connect(_on_player_collided)
 	point_scored.connect(_on_point_scored)
 	player_jumped.connect(_on_player_jumped)
+
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("jump") and player.is_dead:
+		player.process_mode = Node.PROCESS_MODE_ALWAYS
+		pipe_wall_spawner.destroy_all_pipe_walls()
+		pipe_wall_spawner.timer.stop()
+		player.respawn()
+		get_tree().paused = false
 
 
 func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: Area2D) -> void:

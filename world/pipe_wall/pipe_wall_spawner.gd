@@ -18,3 +18,8 @@ func spawn() -> void:
 	var _pipe_wall := _pipe_wall_scene.instantiate() as PipeWall
 	_pipe_wall.position.y = int(randf_range(_range_top.position.y, _range_bottom.position.y))
 	_pipes.add_child(_pipe_wall)
+
+
+func destroy_all_pipe_walls() -> void:
+	for pipe_wall in _pipes.get_children():
+		pipe_wall.queue_free()
