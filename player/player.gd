@@ -33,6 +33,13 @@ func die() -> void:
 	GameManager.player_died.emit(self)
 
 
+# This should be flap(), but oh well
+func jump() -> void:
+	velocity.y = _jump_impulse
+	rotation_degrees = _jump_rotation_degrees
+	GameManager.player_jumped.emit()
+
+
 func _set_is_gliding(new_value: bool) -> void:
 	is_gliding = new_value
 	if new_value:
@@ -43,13 +50,16 @@ func _set_is_gliding(new_value: bool) -> void:
 		animation_player.stop()
 
 
-func _physics_process(delta: float) -> void:
-	if not is_gliding:
-		#TODO# Should this be handled by a GameManager or InputManager instead?
-		if Input.is_action_just_pressed("jump") and not is_dead:
-			velocity.y = _jump_impulse
-			rotation_degrees = _jump_rotation_degrees
+func _ready() -> void:
+	is_gliding = true
 
+
+func _physics_process(delta: float) -> void:
+	#TODO# Should this be handled by a GameManager or InputManager instead?
+	if Input.is_action_just_pressed("jump") and not is_dead:
+		jump()
+
+	if not is_gliding:
 		# Apply gravity, limiting the falling speed to the preset max
 		velocity.y += _gravity * delta  # Gravity = acceleration, so, *delta here and *delta again later
 		velocity.y = clampf(velocity.y, _jump_impulse, _max_falling_speed)
