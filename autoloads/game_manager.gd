@@ -43,6 +43,12 @@ func _on_player_died(player: Player) -> void:
 	print("#TODO# oh no, player died")
 
 
+func _on_player_jumped() -> void:
+	if player.is_gliding:
+		player.is_gliding = false
+		pipe_wall_spawner.timer.start()
+
+
 func _on_point_scored() -> void:
 	score += 1
 	prints("#TODO# Score:", score)
