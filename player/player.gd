@@ -3,8 +3,9 @@ extends CharacterBody2D
 # Got some hints from this FlappyBird tutorial:
 # https://github.com/wojciech-bilicki/FlappyBird/blob/main/Scripts/bird.gd
 
-var is_dead: bool = false
 var is_gliding: bool: set = _set_is_gliding
+var is_dropping: bool = false
+var is_dead: bool = false
 
 var _gravity: int = 700
 var _max_falling_speed: int = 400
@@ -21,16 +22,21 @@ var _dead_bounce_speed: int = 50
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func die() -> void:
-	print("#TODO# die called")
-	is_dead = true
-	animated_sprite.stop()
+func drop() -> void:
+	print("#TODO# drop called")
+	is_dropping = true
 	is_gliding = false
+	animated_sprite.stop()
 	_falling_rotation_degrees_speed = _dead_falling_rotation_degrees_speed
 	velocity.y = _dead_bounce_speed
 
-	#TODO# Probably should skip this signal, since it's only GameManager who calls player.die() anyway
-	GameManager.player_died.emit(self)
+
+func die() -> void:
+	print("#TODO# die called")
+	is_dropping = false
+	is_gliding = false
+	animated_sprite.stop()
+	is_dead = true
 
 
 # This should be flap(), but oh well
@@ -56,7 +62,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#TODO# Should this be handled by a GameManager or InputManager instead?
-	if Input.is_action_just_pressed("jump") and not is_dead:
+	if Input.is_action_just_pressed("jump") and not is_dropping and not is_dead:
 		jump()
 
 	if not is_gliding:
