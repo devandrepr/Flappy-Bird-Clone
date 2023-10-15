@@ -4,6 +4,8 @@ extends Node2D
 @export var sky_speed: int = -2
 @export var buildings_speed: int = -4
 
+@onready var _sky: Node2D = $Sky
+@onready var _buildings: Node2D = $Buildings
 @onready var _sky_sprite1: Sprite2D = $Sky/Sprite1
 @onready var _sky_sprite2: Sprite2D = $Sky/Sprite2
 @onready var _sky_vos1: VisibleOnScreenNotifier2D = $Sky/Sprite1/VisibleOnScreenNotifier2D
@@ -17,15 +19,15 @@ extends Node2D
 func _ready() -> void:
 	_sky_vos1.connect("screen_exited", _on_screen_exited.bind(_sky_sprite1, _sky_sprite2))
 	_sky_vos2.connect("screen_exited", _on_screen_exited.bind(_sky_sprite2, _sky_sprite1))
-	_buildings_vos1.connect("screen_exited", _on_screen_exited.bind(_buildings_sprite1, _buildings_sprite2))
-	_buildings_vos2.connect("screen_exited", _on_screen_exited.bind(_buildings_sprite2, _buildings_sprite1))
+	_buildings_vos1.connect("screen_exited",
+		_on_screen_exited.bind(_buildings_sprite1, _buildings_sprite2))
+	_buildings_vos2.connect("screen_exited",
+		_on_screen_exited.bind(_buildings_sprite2, _buildings_sprite1))
 
 
 func _process(delta: float) -> void:
-	_sky_sprite1.position.x += sky_speed * delta
-	_sky_sprite2.position.x += sky_speed * delta
-	_buildings_sprite1.position.x += buildings_speed * delta
-	_buildings_sprite2.position.x += buildings_speed * delta
+	_sky.position.x += sky_speed * delta
+	_buildings.position.x += buildings_speed * delta
 
 
 func _on_screen_exited(sprite_out: Sprite2D, sprite_in: Sprite2D) -> void:
