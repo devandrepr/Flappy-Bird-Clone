@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8405ekmhahel"]
+[gd_scene load_steps=6 format=3 uid="uid://b8405ekmhahel"]
 
 [ext_resource type="PackedScene" uid="uid://cs7igdqpl32lu" path="res://world/background/background.tscn" id="1_ghvjt"]
 [ext_resource type="PackedScene" uid="uid://dvvpuuph1wfc1" path="res://world/pipe_wall/pipe_wall_spawner.tscn" id="2_i27xn"]
 [ext_resource type="PackedScene" uid="uid://i06jq56sstlm" path="res://world/floor/floor.tscn" id="2_ia2t6"]
 [ext_resource type="PackedScene" uid="uid://pqbxot2i8lgq" path="res://player/player.tscn" id="4_6dmlv"]
+[ext_resource type="PackedScene" uid="uid://dj2r0fh3wx2q1" path="res://effects/crash_effect.tscn" id="5_066ye"]
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -26,4 +27,7 @@ process_mode = 1
 position = Vector2(0, 112)
 
 [node name="Player" parent="." instance=ExtResource("4_6dmlv")]
+unique_name_in_owner = true
+
+[node name="CrashEffect" parent="." instance=ExtResource("5_066ye")]
 unique_name_in_owner = true
