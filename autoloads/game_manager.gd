@@ -6,12 +6,35 @@ signal player_jumped
 signal point_scored
 
 var score: int = 0
+var medals := {
+	platinum = 40,
+	gold = 30,
+	silver = 20,
+	bronze = 10,
+}
+var medal: String
 
 @onready var background: Background = get_tree().current_scene.get_node("%Background")
 @onready var pipe_wall_spawner: PipeWallSpawner = get_tree().current_scene.get_node("%PipeWallSpawner")
 @onready var floor: Floor = get_tree().current_scene.get_node("%Floor")
 @onready var player: Player = get_tree().current_scene.get_node("%Player")
 @onready var crash_effect: CrashEffect = get_tree().current_scene.get_node("%CrashEffect")
+
+
+func game_over() -> void:
+	print("#TODO# ---GAME OVER---")
+	prints("#TODO# Score:", score)
+	for m in medals.keys():
+		var _score_threshold: int = medals[str(m)]
+		if int(score / _score_threshold) > 0:
+			medal = m
+			break
+
+	prints("#TODO# Medal:", medal.to_pascal_case() + "!" if medal else "none")
+	print("#TODO# ---------------")
+
+	medal = ""
+	score = 0
 
 
 func _init() -> void:
@@ -51,6 +74,7 @@ func _on_player_collided(player: Player, collider: Node2D) -> void:
 		player.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 		player.die()
+		game_over()
 
 
 func _on_player_jumped() -> void:
