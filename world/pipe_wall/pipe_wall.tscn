@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3s4ynl35d56m"]
+[gd_scene load_steps=6 format=3 uid="uid://c3s4ynl35d56m"]
 
 [ext_resource type="Script" path="res://world/pipe_wall/pipe_wall.gd" id="1_1imed"]
 [ext_resource type="Texture2D" uid="uid://4q0ys0b30nr3" path="res://world/pipe_wall/pipe.png" id="2_h6kbo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov14d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcl6t"]
 size = Vector2(28, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ardgq"]
+size = Vector2(28, 1660)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fhjh"]
 size = Vector2(10, 60)
@@ -24,7 +27,7 @@ region_rect = Rect2(0, 0, 32, 256)
 region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PipeBottom"]
-shape = SubResource("RectangleShape2D_ov14d")
+shape = SubResource("RectangleShape2D_lcl6t")
 
 [node name="PipeTop" type="Area2D" parent="."]
 process_mode = 1
@@ -39,7 +42,8 @@ region_rect = Rect2(0, 0, 32, 256)
 region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PipeTop"]
-shape = SubResource("RectangleShape2D_ov14d")
+position = Vector2(0, -702)
+shape = SubResource("RectangleShape2D_ardgq")
 
 [node name="ScoreArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -50,5 +54,3 @@ shape = SubResource("RectangleShape2D_5fhjh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(1.6, 28.8)
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_vos_screen_exited"]
