@@ -11,7 +11,7 @@ var is_respawning: bool = false
 
 var _gravity: int = 700
 var _max_falling_speed: int = 400
-var _jump_impulse: int = -240
+var _jump_impulse: int = -230
 var _jump_rotation_degrees: int = -20
 var _fraction_of_max_falling_speed_to_begin_rotating_down: float = 0.3
 var _falling_rotation_degrees_max: int = 90

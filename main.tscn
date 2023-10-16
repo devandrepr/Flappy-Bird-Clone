@@ -164,7 +164,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Title" type="Label" parent="UI"]
-visible = false
 layout_mode = 0
 offset_top = 32.0
 offset_right = 170.0
