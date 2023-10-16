@@ -187,11 +187,12 @@ autowrap_mode = 3
 
 [node name="Instruction" type="TextureRect" parent="UI"]
 layout_mode = 0
-offset_top = 129.0
-offset_right = 170.0
-offset_bottom = 225.0
+offset_left = 43.0
+offset_top = 165.0
+offset_right = 127.0
+offset_bottom = 190.0
 texture = ExtResource("7_j645s")
-stretch_mode = 3
+stretch_mode = 2
 
 [node name="CrashEffect" parent="." instance=ExtResource("5_066ye")]
 unique_name_in_owner = true
