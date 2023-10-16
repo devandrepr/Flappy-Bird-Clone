@@ -3,6 +3,10 @@ extends CharacterBody2D
 # Got some hints from this FlappyBird tutorial:
 # https://github.com/wojciech-bilicki/FlappyBird/blob/main/Scripts/bird.gd
 
+@export var audio_jump: AudioStream
+@export var audio_drop: AudioStream
+@export var audio_crash: AudioStream
+
 #TODO# Need a finite state machine instead of everything related to these booleans
 var is_gliding: bool: set = _set_is_gliding
 var is_dropping: bool = false
@@ -27,6 +31,11 @@ var _initial_falling_rotation_degrees_speed := _falling_rotation_degrees_speed
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+func crash() -> void:
+	print("#TODO# crash called")
+	AudioManager.play(audio_crash)
+
+
 func drop() -> void:
 	print("#TODO# drop called")
 	is_dropping = true
@@ -34,6 +43,7 @@ func drop() -> void:
 	animated_sprite.stop()
 	_falling_rotation_degrees_speed = _dead_falling_rotation_degrees_speed
 	velocity.y = _dead_bounce_speed
+	AudioManager.play(audio_drop)
 
 
 func die() -> void:
@@ -49,6 +59,7 @@ func jump() -> void:
 	velocity.y = _jump_impulse
 	rotation_degrees = _jump_rotation_degrees
 	GameManager.player_jumped.emit()
+	AudioManager.play(audio_jump)
 
 
 func respawn() -> void:

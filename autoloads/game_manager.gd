@@ -16,12 +16,24 @@ var medal_index: int
 
 var _player_has_died_once: bool = false
 
+@onready var sounds: Sounds = get_tree().current_scene.get_node("%Sounds")
 @onready var background: Background = get_tree().current_scene.get_node("%Background")
 @onready var pipe_wall_spawner: PipeWallSpawner = get_tree().current_scene.get_node("%PipeWallSpawner")
 @onready var floor: Floor = get_tree().current_scene.get_node("%Floor")
 @onready var player: Player = get_tree().current_scene.get_node("%Player")
 @onready var ui: UI = get_tree().current_scene.get_node("%UI")
 @onready var crash_effect: CrashEffect = get_tree().current_scene.get_node("%CrashEffect")
+
+
+func game_start() -> void:
+	print("#TODO# Game start")
+	player.is_gliding = false
+	pipe_wall_spawner.timer.start()
+	ui.title_hide()
+	ui.get_ready_hide()
+	ui.instruction_hide()
+	ui.score_show()
+	AudioManager.play(sounds.game_start)
 
 
 func game_over() -> void:
@@ -46,6 +58,7 @@ func game_over() -> void:
 	score = 0
 	_player_has_died_once = true
 	ui.instruction_show()
+	AudioManager.play(sounds.game_end)
 
 
 func highscore_save() -> void:
@@ -99,6 +112,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: Area2D) -> void:
 	if body == player:
 		if not player.is_dropping:
+			player.crash()
 			crash_effect.crash()
 			player.drop()
 			get_tree().paused = true
@@ -107,6 +121,7 @@ func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: 
 func _on_player_collided(player: Player, collider: Node2D) -> void:
 	if collider == floor:
 		if not player.is_dropping:
+			player.crash()
 			crash_effect.crash()
 
 		# Pause the scene and make the Player node pausable like the others already are, so it stops
@@ -120,12 +135,7 @@ func _on_player_collided(player: Player, collider: Node2D) -> void:
 
 func _on_player_jumped() -> void:
 	if player.is_gliding:
-		player.is_gliding = false
-		pipe_wall_spawner.timer.start()
-		ui.title_hide()
-		ui.get_ready_hide()
-		ui.instruction_hide()
-		ui.score_show()
+		game_start()
 
 
 func _on_point_scored() -> void:
@@ -133,4 +143,5 @@ func _on_point_scored() -> void:
 	if score > highscore:
 		highscore = score
 	ui.score_set(score)
+	AudioManager.play(sounds.point_scored)
 	prints("#TODO# Score:", score)

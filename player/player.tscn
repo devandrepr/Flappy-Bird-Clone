@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://pqbxot2i8lgq"]
+[gd_scene load_steps=15 format=3 uid="uid://pqbxot2i8lgq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_71nxc"]
 [ext_resource type="Texture2D" uid="uid://cd5wnkj6jsfsg" path="res://player/bird.png" id="1_disqy"]
+[ext_resource type="AudioStream" uid="uid://do6403awujdr" path="res://audio/wing.wav" id="2_q27q6"]
+[ext_resource type="AudioStream" uid="uid://lwqiqon5d0gn" path="res://audio/die.wav" id="3_s0khi"]
+[ext_resource type="AudioStream" uid="uid://hv2p30q6xxox" path="res://audio/hit.wav" id="4_6h7bb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yondm"]
 atlas = ExtResource("1_disqy")
@@ -84,6 +87,9 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_71nxc")
+audio_jump = ExtResource("2_q27q6")
+audio_drop = ExtResource("3_s0khi")
+audio_crash = ExtResource("4_6h7bb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fo7mq")

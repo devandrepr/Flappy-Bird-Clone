@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8405ekmhahel"]
+[gd_scene load_steps=21 format=3 uid="uid://b8405ekmhahel"]
 
 [ext_resource type="PackedScene" uid="uid://cs7igdqpl32lu" path="res://world/background/background.tscn" id="1_ghvjt"]
+[ext_resource type="Script" path="res://audio/sounds.gd" id="1_ro4m1"]
 [ext_resource type="PackedScene" uid="uid://dvvpuuph1wfc1" path="res://world/pipe_wall/pipe_wall_spawner.tscn" id="2_i27xn"]
 [ext_resource type="PackedScene" uid="uid://i06jq56sstlm" path="res://world/floor/floor.tscn" id="2_ia2t6"]
+[ext_resource type="AudioStream" uid="uid://rb03qse6jjsx" path="res://audio/point.wav" id="3_w3qry"]
 [ext_resource type="PackedScene" uid="uid://pqbxot2i8lgq" path="res://player/player.tscn" id="4_6dmlv"]
 [ext_resource type="PackedScene" uid="uid://dj2r0fh3wx2q1" path="res://effects/crash_effect.tscn" id="5_066ye"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="5_lonoy"]
@@ -16,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d31054yyb1oat" path="res://ui/medal3.png" id="9_nufvr"]
 [ext_resource type="Texture2D" uid="uid://b33ne74biblhi" path="res://ui/scoreboard_best.png" id="10_acn1l"]
 [ext_resource type="Texture2D" uid="uid://b30r0qxmie8o7" path="res://ui/medal4.png" id="10_ewq3f"]
+[ext_resource type="AudioStream" uid="uid://ckh8fqq4s6pv7" path="res://audio/swoosh.wav" id="17_l5huq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7qc5"]
 bg_color = Color(0.996094, 0.960938, 0.691406, 1)
@@ -27,6 +30,13 @@ border_color = Color(0.339844, 0.109375, 0.152344, 1)
 
 [node name="Main" type="Node2D"]
 process_mode = 3
+
+[node name="Sounds" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ro4m1")
+game_start = ExtResource("17_l5huq")
+game_end = ExtResource("17_l5huq")
+point_scored = ExtResource("3_w3qry")
 
 [node name="Background" parent="." instance=ExtResource("1_ghvjt")]
 unique_name_in_owner = true
