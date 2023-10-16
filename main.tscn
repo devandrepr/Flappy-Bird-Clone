@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b8405ekmhahel"]
+[gd_scene load_steps=22 format=3 uid="uid://b8405ekmhahel"]
 
 [ext_resource type="PackedScene" uid="uid://cs7igdqpl32lu" path="res://world/background/background.tscn" id="1_ghvjt"]
 [ext_resource type="Script" path="res://audio/sounds.gd" id="1_ro4m1"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b33ne74biblhi" path="res://ui/scoreboard_best.png" id="10_acn1l"]
 [ext_resource type="Texture2D" uid="uid://b30r0qxmie8o7" path="res://ui/medal4.png" id="10_ewq3f"]
 [ext_resource type="AudioStream" uid="uid://ckh8fqq4s6pv7" path="res://audio/swoosh.wav" id="17_l5huq"]
+[ext_resource type="Texture2D" uid="uid://63s2r70rbvga" path="res://ui/url.png" id="20_tjvr4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7qc5"]
 bg_color = Color(0.996094, 0.960938, 0.691406, 1)
@@ -217,3 +218,18 @@ stretch_mode = 2
 [node name="CrashEffect" parent="." instance=ExtResource("5_066ye")]
 unique_name_in_owner = true
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("20_tjvr4")
+stretch_mode = 2
