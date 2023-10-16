@@ -5,14 +5,14 @@ signal player_collided(player: Player, collider: Node2D)
 signal player_jumped
 signal point_scored
 
-var score: int = 0
-var medals := {
-	platinum = 40,
-	gold = 30,
-	silver = 20,
-	bronze = 10,
-}
-var medal: String
+const HIGHSCORE_DATA_PATH = "user://highscore.dat"
+
+var medal_score_thresholds: Array[int] = [1, 10, 20, 30, 40]
+var medal_indexes: Array[int] = [0, 1, 2, 3, 4]
+
+var score: int
+var highscore: int
+var medal_index: int
 
 @onready var background: Background = get_tree().current_scene.get_node("%Background")
 @onready var pipe_wall_spawner: PipeWallSpawner = get_tree().current_scene.get_node("%PipeWallSpawner")
@@ -22,19 +22,34 @@ var medal: String
 
 
 func game_over() -> void:
+	highscore_save()
 	print("#TODO# ---GAME OVER---")
 	prints("#TODO# Score:", score)
-	for m in medals.keys():
-		var _score_threshold: int = medals[str(m)]
-		if int(score / _score_threshold) > 0:
-			medal = m
-			break
-
-	prints("#TODO# Medal:", medal.to_pascal_case() + "!" if medal else "none")
+	prints("#TODO# Highscore:", highscore)
+	for i in medal_indexes:
+		if int(score / medal_score_thresholds[i]) > 0:
+			medal_index = i
+	if not medal_index:
+		medal_index = 0
+	prints("#TODO# Medal index:", medal_index)
 	print("#TODO# ---------------")
 
-	medal = ""
+
+	medal_index = 0
 	score = 0
+
+
+func highscore_save() -> void:
+	var _data := FileAccess.open(HIGHSCORE_DATA_PATH, FileAccess.WRITE)
+	_data.store_var(highscore)
+	_data.close()
+
+
+func highscore_load() -> void:
+	if FileAccess.file_exists(HIGHSCORE_DATA_PATH):
+		var _data := FileAccess.open(HIGHSCORE_DATA_PATH, FileAccess.READ)
+		highscore = _data.get_var()
+		_data.close()
 
 
 func _init() -> void:
@@ -44,6 +59,11 @@ func _init() -> void:
 	player_collided.connect(_on_player_collided)
 	point_scored.connect(_on_point_scored)
 	player_jumped.connect(_on_player_jumped)
+
+
+func _ready() -> void:
+	await get_tree().process_frame
+	highscore_load()
 
 
 func _physics_process(delta: float) -> void:
@@ -85,4 +105,6 @@ func _on_player_jumped() -> void:
 
 func _on_point_scored() -> void:
 	score += 1
+	if score > highscore:
+		highscore = score
 	prints("#TODO# Score:", score)
