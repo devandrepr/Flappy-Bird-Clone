@@ -21,6 +21,9 @@ var _slowmotion_time_scale: float = SLOWMOTION_MIN
 
 
 func _input(event: InputEvent) -> void:
+	if not OS.has_feature("debug"):
+		return
+
 	if slowmotion_is_enabled:
 		if Input.is_key_pressed(SLOWMOTION_TOGGLE_KEY):
 			if _slowmotion_is_active:
@@ -55,6 +58,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	if not OS.has_feature("debug"):
+		return
+
 	if not background_is_enabled:
 		prints("[Debugger] Background is disabled; freeing", GameManager.background)
 		GameManager.background.queue_free()
