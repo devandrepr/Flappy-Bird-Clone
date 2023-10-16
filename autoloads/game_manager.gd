@@ -3,7 +3,7 @@ extends Node
 signal body_entered_pipe(body: Node2D, pipe_entered: Area2D, pipe_opposite: Area2D)
 signal player_collided(player: Player, collider: Node2D)
 signal player_jumped
-signal point_scored
+signal point_scored(body: Node2D)
 
 const HIGHSCORE_DATA_PATH = "user://highscore.dat"
 
@@ -138,10 +138,11 @@ func _on_player_jumped() -> void:
 		game_start()
 
 
-func _on_point_scored() -> void:
-	score += 1
-	if score > highscore:
-		highscore = score
-	ui.score_set(score)
-	AudioManager.play(sounds.point_scored)
-	prints("#TODO# Score:", score)
+func _on_point_scored(body: Node2D) -> void:
+	if body == player:
+		score += 1
+		if score > highscore:
+			highscore = score
+		ui.score_set(score)
+		AudioManager.play(sounds.point_scored)
+		prints("#TODO# Score:", score)

@@ -24,8 +24,8 @@ func _on_body_entered_pipe(body: Node2D, pipe_entered: Area2D, pipe_opposite: Ar
 	GameManager.body_entered_pipe.emit(body, pipe_entered, pipe_opposite)
 
 
-func _on_body_entered_score_area(_body: Node2D) -> void:
-	GameManager.point_scored.emit()
+func _on_body_entered_score_area(body: Node2D) -> void:
+	GameManager.point_scored.emit(body)
 
 
 func _on_screen_exited() -> void:
