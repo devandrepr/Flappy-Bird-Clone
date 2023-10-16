@@ -34,6 +34,10 @@ func score_hide() -> void:
 	score.visible = false
 
 
+func title_show() -> void:
+	title.visible = true
+
+
 func title_hide() -> void:
 	title.visible = false
 

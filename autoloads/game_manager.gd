@@ -39,6 +39,7 @@ func game_over() -> void:
 
 	ui.medal_set(medal_index)
 	ui.highscore_set(highscore)
+	ui.score_hide()
 	ui.game_over_screen_show()
 
 	medal_index = 0
@@ -73,6 +74,13 @@ func _ready() -> void:
 	await get_tree().process_frame
 	ui.score_set(score)
 	highscore_load()
+
+	ui.game_over_screen_hide()
+	ui.score_hide()
+	ui.get_ready_hide()
+
+	ui.title_show()
+	ui.instruction_show()
 
 
 func _physics_process(delta: float) -> void:
