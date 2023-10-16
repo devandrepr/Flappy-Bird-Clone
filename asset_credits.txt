@@ -1,0 +1,7 @@
+Sprite pack: https://megacrash.itch.io/flappy-bird-assets
+I adapted the background image to apply parallax and made my medal sprites using the original game as reference along with the bird from this pack.
+
+Sound files: https://github.com/samuelcust/flappy-bird-assets
+License file is included in the audio folder.
+
+04font from Yuji Oshimoto: https://www.04.jp.org
