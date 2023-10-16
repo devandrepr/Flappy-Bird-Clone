@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d0e16lpvjlaco"]
+
+[ext_resource type="FontFile" uid="uid://csmlsae2e365s" path="res://ui/04B_19__.TTF" id="1_432hn"]
+
+[resource]
+default_font = ExtResource("1_432hn")
+default_font_size = 14
+Label/colors/font_color = Color(1, 0.964706, 0.694118, 1)
+Label/colors/font_outline_color = Color(0.339844, 0.109375, 0.152344, 1)
+Label/constants/outline_size = 4

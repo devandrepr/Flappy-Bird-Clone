@@ -14,10 +14,13 @@ var score: int
 var highscore: int
 var medal_index: int
 
+var _player_has_died_once: bool = false
+
 @onready var background: Background = get_tree().current_scene.get_node("%Background")
 @onready var pipe_wall_spawner: PipeWallSpawner = get_tree().current_scene.get_node("%PipeWallSpawner")
 @onready var floor: Floor = get_tree().current_scene.get_node("%Floor")
 @onready var player: Player = get_tree().current_scene.get_node("%Player")
+@onready var ui: UI = get_tree().current_scene.get_node("%UI")
 @onready var crash_effect: CrashEffect = get_tree().current_scene.get_node("%CrashEffect")
 
 
@@ -34,9 +37,14 @@ func game_over() -> void:
 	prints("#TODO# Medal index:", medal_index)
 	print("#TODO# ---------------")
 
+	ui.medal_set(medal_index)
+	ui.highscore_set(highscore)
+	ui.game_over_screen_show()
 
 	medal_index = 0
 	score = 0
+	_player_has_died_once = true
+	ui.instruction_show()
 
 
 func highscore_save() -> void:
@@ -63,6 +71,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	await get_tree().process_frame
+	ui.score_set(score)
 	highscore_load()
 
 
@@ -73,6 +82,10 @@ func _physics_process(delta: float) -> void:
 		pipe_wall_spawner.timer.stop()
 		player.respawn()
 		get_tree().paused = false
+		ui.score_set(score)
+		if _player_has_died_once:
+			ui.get_ready_show()
+			ui.game_over_screen_hide()
 
 
 func _on_body_entered_pipe(body: Node2D, _pipe_entered: Area2D, _pipe_opposite: Area2D) -> void:
@@ -101,10 +114,15 @@ func _on_player_jumped() -> void:
 	if player.is_gliding:
 		player.is_gliding = false
 		pipe_wall_spawner.timer.start()
+		ui.title_hide()
+		ui.get_ready_hide()
+		ui.instruction_hide()
+		ui.score_show()
 
 
 func _on_point_scored() -> void:
 	score += 1
 	if score > highscore:
 		highscore = score
+	ui.score_set(score)
 	prints("#TODO# Score:", score)

@@ -1,33 +1,201 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8405ekmhahel"]
+[gd_scene load_steps=18 format=3 uid="uid://b8405ekmhahel"]
 
 [ext_resource type="PackedScene" uid="uid://cs7igdqpl32lu" path="res://world/background/background.tscn" id="1_ghvjt"]
 [ext_resource type="PackedScene" uid="uid://dvvpuuph1wfc1" path="res://world/pipe_wall/pipe_wall_spawner.tscn" id="2_i27xn"]
 [ext_resource type="PackedScene" uid="uid://i06jq56sstlm" path="res://world/floor/floor.tscn" id="2_ia2t6"]
 [ext_resource type="PackedScene" uid="uid://pqbxot2i8lgq" path="res://player/player.tscn" id="4_6dmlv"]
 [ext_resource type="PackedScene" uid="uid://dj2r0fh3wx2q1" path="res://effects/crash_effect.tscn" id="5_066ye"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="5_lonoy"]
+[ext_resource type="Theme" uid="uid://d0e16lpvjlaco" path="res://ui/theme.tres" id="5_r3eqw"]
+[ext_resource type="Texture2D" uid="uid://bca8gfeaj8bi6" path="res://ui/medal0.png" id="6_t50vg"]
+[ext_resource type="Texture2D" uid="uid://c3mbicsyhxlpu" path="res://ui/medal1.png" id="7_861nq"]
+[ext_resource type="Texture2D" uid="uid://dlk2a7bciqatj" path="res://ui/instruction.png" id="7_j645s"]
+[ext_resource type="Texture2D" uid="uid://b51ceodmjs102" path="res://ui/scoreboard_medal.png" id="7_ukxvs"]
+[ext_resource type="Texture2D" uid="uid://d3tc5xktqmeh1" path="res://ui/medal2.png" id="8_i03so"]
+[ext_resource type="Texture2D" uid="uid://kbm04uuon248" path="res://ui/scoreboard_score.png" id="9_4sbi4"]
+[ext_resource type="Texture2D" uid="uid://d31054yyb1oat" path="res://ui/medal3.png" id="9_nufvr"]
+[ext_resource type="Texture2D" uid="uid://b33ne74biblhi" path="res://ui/scoreboard_best.png" id="10_acn1l"]
+[ext_resource type="Texture2D" uid="uid://b30r0qxmie8o7" path="res://ui/medal4.png" id="10_ewq3f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7qc5"]
+bg_color = Color(0.996094, 0.960938, 0.691406, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.339844, 0.109375, 0.152344, 1)
 
 [node name="Main" type="Node2D"]
 process_mode = 3
 
-[node name="#TEMP# Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
 [node name="Background" parent="." instance=ExtResource("1_ghvjt")]
 unique_name_in_owner = true
 process_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="PipeWallSpawner" parent="." instance=ExtResource("2_i27xn")]
 unique_name_in_owner = true
 process_mode = 1
 position = Vector2(144, -16)
+metadata/_edit_lock_ = true
 
 [node name="Floor" parent="." instance=ExtResource("2_ia2t6")]
 unique_name_in_owner = true
 process_mode = 1
 position = Vector2(0, 112)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_6dmlv")]
 unique_name_in_owner = true
+position = Vector2(-24, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+metadata/_edit_lock_ = true
+
+[node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -85.0
+offset_top = -128.0
+offset_right = 85.0
+offset_bottom = 128.0
+script = ExtResource("5_lonoy")
+medal_textures = Array[Texture2D]([ExtResource("6_t50vg"), ExtResource("7_861nq"), ExtResource("8_i03so"), ExtResource("9_nufvr"), ExtResource("10_ewq3f")])
+
+[node name="GameOverScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="UI/GameOverScreen"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 170.0
+offset_bottom = 104.0
+theme = ExtResource("5_r3eqw")
+theme_override_font_sizes/font_size = 21
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel" type="Panel" parent="UI/GameOverScreen"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 88.0
+offset_right = 127.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7qc5")
+
+[node name="MedalText" type="TextureRect" parent="UI/GameOverScreen/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 34.0
+offset_bottom = 15.0
+texture = ExtResource("7_ukxvs")
+stretch_mode = 2
+
+[node name="Medal" type="TextureRect" parent="UI/GameOverScreen/Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 21.0
+offset_right = 32.0
+offset_bottom = 43.0
+texture = ExtResource("6_t50vg")
+stretch_mode = 2
+
+[node name="ScoreText" type="TextureRect" parent="UI/GameOverScreen/Panel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 9.0
+offset_right = 74.0
+offset_bottom = 15.0
+texture = ExtResource("9_4sbi4")
+stretch_mode = 2
+
+[node name="Score" type="Label" parent="UI/GameOverScreen/Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 17.0
+offset_right = 74.0
+offset_bottom = 34.0
+theme = ExtResource("5_r3eqw")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "999"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="HighscoreText" type="TextureRect" parent="UI/GameOverScreen/Panel"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 34.0
+offset_right = 74.0
+offset_bottom = 40.0
+texture = ExtResource("10_acn1l")
+stretch_mode = 2
+
+[node name="Highscore" type="Label" parent="UI/GameOverScreen/Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 42.0
+offset_right = 74.0
+offset_bottom = 59.0
+theme = ExtResource("5_r3eqw")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "999"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 32.0
+theme = ExtResource("5_r3eqw")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Title" type="Label" parent="UI"]
+visible = false
+layout_mode = 0
+offset_top = 32.0
+offset_right = 170.0
+offset_bottom = 128.0
+theme = ExtResource("5_r3eqw")
+theme_override_font_sizes/font_size = 21
+text = "Flappy Bird Clone"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GetReady" type="Label" parent="UI"]
+visible = false
+layout_mode = 0
+offset_top = 52.0
+offset_right = 170.0
+offset_bottom = 128.0
+theme = ExtResource("5_r3eqw")
+text = "Get Ready"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Instruction" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_top = 129.0
+offset_right = 170.0
+offset_bottom = 225.0
+texture = ExtResource("7_j645s")
+stretch_mode = 3
 
 [node name="CrashEffect" parent="." instance=ExtResource("5_066ye")]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
