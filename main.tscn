@@ -67,12 +67,22 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -85.0
+offset_left = -86.0
 offset_top = -128.0
-offset_right = 85.0
+offset_right = 86.0
 offset_bottom = 128.0
 script = ExtResource("5_lonoy")
 medal_textures = Array[Texture2D]([ExtResource("6_t50vg"), ExtResource("7_861nq"), ExtResource("8_i03so"), ExtResource("9_nufvr"), ExtResource("10_ewq3f")])
+
+[node name="Background" type="ColorRect" parent="UI"]
+self_modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.937255, 0.470588, 0.262745, 1)
 
 [node name="GameOverScreen" type="Control" parent="UI"]
 layout_mode = 1

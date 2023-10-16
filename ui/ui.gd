@@ -3,6 +3,7 @@ extends Control
 
 @export var medal_textures: Array[Texture2D]
 
+@onready var background: ColorRect = $Background
 @onready var score: Label = $Score
 @onready var title: Label = $Title
 @onready var get_ready: Label = $GetReady
@@ -36,10 +37,12 @@ func score_hide() -> void:
 
 func title_show() -> void:
 	title.visible = true
+	background.visible = true
 
 
 func title_hide() -> void:
 	title.visible = false
+	background.visible = false
 
 
 func get_ready_show() -> void:
@@ -60,7 +63,9 @@ func instruction_hide() -> void:
 
 func game_over_screen_show() -> void:
 	game_over_screen.visible = true
+	background.visible = true
 
 
 func game_over_screen_hide() -> void:
 	game_over_screen.visible = false
+	background.visible = false
